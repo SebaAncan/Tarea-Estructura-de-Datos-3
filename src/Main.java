@@ -30,7 +30,9 @@ public class Main {
         //id0rigen = idDestino = 0;
         System.out.println(redCiudad.registrarRuta(0, 0, redCiudad.costoRuta(0,0)));
 
-        //probar existeConexion()
+        //probar existeConexion() //arreglar
+        System.out.println("¿Existe conexión desde Concepción a San Carlos?: " + redCiudad.existeConexion(1, 2)); // Debe ser true
+        System.out.println("¿Existe conexión desde San Carlos a Concepción?: " + redCiudad.existeConexion(3, 0)); // Debe ser false
 
         //probar Dijkstra
     }
