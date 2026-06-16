@@ -1,4 +1,5 @@
 public class Ciudades {
+    //Gerardo Guíñez y Sebastián ...
     int[][] grafoDestinos;
     String[] nombreCiudad;
     boolean gate;
@@ -8,7 +9,7 @@ public class Ciudades {
         this.N = 100;
         this.grafoDestinos = new int[N][N];
         this.nombreCiudad = new String[N];
-
+        inicializar();
     }
 
     void inicializar(){
@@ -26,6 +27,7 @@ public class Ciudades {
         if (nombreCiudad[id] != null){
             return false;
         }
+
         nombreCiudad[id] = nombre;
         return true;
     }
@@ -44,6 +46,7 @@ public class Ciudades {
         if (costo < 0){
             return false;
         }
+
         grafoDestinos[idOrigen][idDestino] = costo;
         return true;
     }
@@ -58,6 +61,7 @@ public class Ciudades {
         if (idDestino == idOrigen){
             return false;
         }
+
         return true;
     }
 
@@ -73,12 +77,14 @@ public class Ciudades {
         if (!verificadores(idOrigen,idDestino)){
             return false;
         }
+
         int[] visitados = new int[N];
+
         for (int i = 0; i<N;i++){
-            visitados[i] = 0;//no visitao
+            visitados[i] = 0;//no visitado
         }
-        boolean exito = buscar(idOrigen,idDestino,visitados);
-        return exito;
+
+        return buscar(idOrigen,idDestino,visitados);
     }
 
     private boolean buscar(int idOrigen,int idDestino,int[] visitados){
@@ -98,8 +104,29 @@ public class Ciudades {
     }
 
     //implementar algoritmo de Djriska para la distancia mas corta
-
+    public int[] dijkstra(int idOrigen){
+        return new int[0];
+    }
     //Agregar coso para imprimir el arreglo
+    public void imprimirCaminoCorto(int idOrigen){
+        if(idOrigen < 0 || idOrigen >= N || nombreCiudad[idOrigen] == null){
+            System.out.println("No existe :c");
+            return;
+        }
 
+        int[] distancias = dijkstra(idOrigen);
+
+        System.out.println("Caminos más cortos: " + nombreCiudad[idOrigen] + "ID: " + idOrigen);
+
+        for(int i  = 0; i < N; i++){
+            System.out.println("Hacia: " + nombreCiudad[i] + "ID: " + i);
+
+            if(distancias[i] != Integer.MAX_VALUE){
+                System.out.println(distancias[i] + " km/pesos");
+            } else{
+                System.out.println("No existe ruta");
+            }
+        }
+    }
 
 }
