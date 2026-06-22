@@ -1,5 +1,6 @@
 import java.awt.*;
 
+
 public class Ciudades {
     //Gerardo Guíñez y Sebastián ...
     int[][] grafoDestinos;
@@ -191,4 +192,96 @@ public class Ciudades {
          */
     }
 
-}
+    //Parte 2 de la tarea hola gerardo
+    private void djsristrakAux(int idOrigen,int[] padre, int[] distancia){
+        int[] visitado = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            distancia[i] = Integer.MAX_VALUE;
+            visitado[i] = 0;
+            padre[i] = -1;
+        }
+        distancia[idOrigen] = 0;
+
+        for (int i = 0; i < N; i++) {
+            int x = -1;
+            int minimo = Integer.MAX_VALUE;
+
+            for (int j = 0; j < N; j++) {
+                if (visitado[j] == 0 && distancia[j] < minimo) {
+                    minimo = distancia[j];
+                    x = j;
+                }
+            }
+
+            //no hay nodos alcanzables
+            if (x == -1) {
+                break;
+            }
+
+            visitado[x] = 1;
+
+            for (int v = 0; v < N; v++) {
+                if (visitado[v] == 0 && grafoDestinos[x][v] != Integer.MAX_VALUE) {
+                    int costo = distancia[x] + grafoDestinos[x][v];
+                    if (costo < distancia[v]) {
+                        distancia[v] = costo;
+                        padre[v] = x;
+                    }
+                }
+            }
+        }
+    }
+
+    public void ciudadGate(int k){
+        if (k <= 0 || k>N){
+            System.out.println("valor invalido");
+            return;
+        }
+
+        int[] conteo = new int[N];
+
+        for (int origen = 0 ; origen<N;origen++) {
+            if (nombreCiudad[origen] == null) {
+                continue;
+            }
+            int[] padre = new int[N];
+            int[] distancia = new int[N];
+
+            djsristrakAux(origen, padre, distancia);
+
+            for (int destino = 0; destino < N; destino++) {
+                if (origen == destino || nombreCiudad[destino] == null || distancia[destino] == Integer.MAX_VALUE) {
+                    continue;
+                }
+                int actual = padre[destino];
+                while (actual != -1 && actual != origen) {
+                    conteo[actual]++; // 1 mas de trafico
+                    actual = padre[actual];
+                }
+            }
+        }
+                System.out.println("\n--- TOP " + k + " CIUDADES GATE ---");
+                for (int i = 0; i < k; i++) {
+                    int maxConteo = -1;
+                    int idMax = -1;
+
+                    // ciudad mas buscada
+                    for (int j = 0; j < N; j++) {
+                        if (nombreCiudad[j] != null && conteo[j] > maxConteo) {
+                            maxConteo = conteo[j];
+                            idMax = j;
+                        }
+                    }
+
+                    if (idMax != -1) {
+                        System.out.println((i + 1) + ". " + nombreCiudad[idMax] + " (ID: " + idMax + ") - Atraviesa " + maxConteo + " rutas óptimas.");
+                        conteo[idMax] = -1;
+                    }
+                }
+
+
+        }
+    }
+
+

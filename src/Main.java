@@ -35,5 +35,9 @@ public class Main {
         // Debería preferir dar la vuelta por Chillán (Costo 300) en lugar de ir directo 500
         System.out.println("Calculando camino mínimo desde Cauquenes (0) a Santiago (2)...");
         redCiudad.dijkstra(0, 2);
+
+        // Al final de tu public static void main...
+        System.out.println("\nCalculando las mejores ciudades para instalar centros de abastecimiento...");
+        redCiudad.ciudadGate(2);
     }
 }
