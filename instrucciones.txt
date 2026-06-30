@@ -1,0 +1,20 @@
+Sebastian Ancan , Gerardo Guíñez
+
+como ejecutar:
+    abrir el proyecto con IntellIdea y ejecutarlo
+
+    O
+
+       abrir la pagina web https://www.onlinegdb.com/online_java_compiler
+       subir los archivos en ella y ejecutar el Main
+       (y borrar la clase main que viene pre-hecha por la pagina)
+
+
+Instrucciones de Uso:
+    1. Registrar ciudad, pide un ID (Int) y un nombre para agregar una nueva ciudad a la red
+    2- Registar ruta, pide un id de origen y uno de destino, ademas del costo que tendra ese camino,creando el arco en el grafo
+    3- Buscar conexion entre ciudades, verifica si es posible llegar de una ciudad hasta otra, sin importar la distancia o costo
+    4- Buscar el camino mas corto, usa el algoritmode dijkstra para calcular el camino mas corto, pide 2 id, origen y destino, muestra el camino exacto que tomo paso a paso y la distancia minima
+    5- buscar ciudades gate, pide un numero k de ciudades gate y calcula el top k de las ciudades mas transitadas por los caminos optimos, ocupa djsriska pero mas modificado
+    6- Usa datos pre hechos para no tener que dejar al usuario el trabajo, hace test de errores y verificaciones como IDs repetidos de forma automatica
+    7- Salir del programa

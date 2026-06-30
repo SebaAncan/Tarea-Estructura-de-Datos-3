@@ -5,7 +5,7 @@ public class Ciudades {
     //Gerardo Guíñez y Sebastián ...
     int[][] grafoDestinos;
     String[] nombreCiudad;
-    boolean gate;
+    //boolean gate;
     int N;
     //Use la misma estructra del lab pq se ven similares
     Ciudades(){
@@ -170,29 +170,10 @@ public class Ciudades {
         }
         System.out.println("El camino para ir de la ciudad " + idOrigen + " a la " + idDestino + " es: " + ruta);
 
-        /*if(idOrigen < 0 || idOrigen >= N || nombreCiudad[idOrigen] == null){
-            System.out.println("No existe :c");
-            return;
-        }
 
-        int[] distancias = dijkstra(idOrigen);
-
-        System.out.println("Caminos más cortos: " + nombreCiudad[idOrigen] + "ID: " + idOrigen);
-
-        for(int i  = 0; i < N; i++){
-            System.out.println("Hacia: " + nombreCiudad[i] + "ID: " + i);
-
-            if(distancias[i] != Integer.MAX_VALUE){
-                System.out.println(distancias[i] + " km/pesos");
-            } else{
-                System.out.println("No existe ruta");
-            }
-        }
-
-         */
     }
 
-    //Parte 2 de la tarea hola gerardo
+    //Parte 2 de la tarea, hola gerardo , Lo voy a dejar hecho antes de la hospitalizacion :P
     private void djsristrakAux(int idOrigen,int[] padre, int[] distancia){
         int[] visitado = new int[N];
 
